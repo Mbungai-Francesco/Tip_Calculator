@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap')
 *
   margin: 0
   padding: 0
@@ -7,6 +8,29 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button 
   -webkit-appearance: none
   margin: 0
+:focus
+  // outline: none
+%labels
+  color: hsl(186, 14%, 43%)
+  font-weight: 600
+  font-size: .8em
+  margin-block: 0 .5em
+@mixin btns($backColor, $color)
+  background-color: $backColor
+  color: $color
+  border: 0
+  padding-block: .3em
+  font-weight: 600
+  font-size: 1.2em
+  border-radius: 5px
+  cursor: pointer
+  &:hover
+    background-color: hsl(172, 67%, 45%)
+    color: hsl(183, 100%, 15%)
+
+.hidden
+  display: none
+
 body
   height: 100vh
   background-color: hsl(185, 41%, 84%)
@@ -23,32 +47,107 @@ main
   background-color: white
   width: 50%
   justify-content: space-between
-.left
+  border-radius: 15px
   padding: 2em 2em
-  width: 50%
+.left
+  width: 48%
   label
+    display: block
     width: 100%
-    input
-      width: 90%
-      text-align: right
-      padding: 0.3em .5em
-      font-size: 1.2em
-      border: 0
-      // background-color: hsl(189, 41%, 97%)
-      background-color: black
-      color: hsl(185, 41%, 84%)
+    .text
+      display: flex
+      justify-content: space-between
+    p, .error
+      @extend %labels
+    .error
+      margin-inline: 1.5em 0
+      color: hsl(0, 100%, 74%)
     .input
       position: relative
-      // display: flex
-      // align-items: center
-    // .input::placeholder
-    //   color: hsl(185, 41%, 84%)
+      display: flex
       svg
         position: absolute
         left: 1em
+        align-self: center
+        // width: 5px
+      input
+        width: 100%
+        text-align: right
+        padding: 0.3em .5em
+        font-size: 1.2em
+        border: 0
+        background-color: hsl(189, 41%, 97%)
+        box-shadow: 1px 1px 2px #1111111c
+        color: hsl(183, 100%, 15%)
+        border-radius: 5px
+        outline-color: hsl(172, 67%, 45%)
+        font-weight: 600
+        color: hsl(183, 100%, 25%)
+        &::placeholder
+          color: hsl(184, 14%, 75%)
+  label:nth-child(1)
+    margin-block: 0 1.7em
+  #select
+    margin-block: 0 1.7em
+    #select_tip
+      @extend %labels
+    .tips
+      display: grid
+      grid-template-columns: 30% 30% 30%
+      justify-content: space-between
+      div
+        text-align: center
+      .tip
+        margin-block: .5em
+        @include btns(hsl(183, 100%, 15%), white)
+        &:last-child
+          padding-inline: .3em
+          text-align: right
+          cursor: text
+          background-color: hsl(189, 41%, 97%)
+          color: hsl(183, 100%, 25%)
+          outline-color: hsl(172, 67%, 45%)
+          // caret-shape: bar
+          &::placeholder
+            font-size: 1em
+            text-align: center
+            color: hsl(183, 100%, 25%)
+            // test-align: right
 
 .right
-  padding: 2em 2em
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  padding-inline: 2em
+  padding-block: 2em 1em
+  width: 48%
+  background-color: hsl(183, 100%, 15%)
+  border-radius: 10px
+  .rightTop
+    .displays
+      display: flex
+      justify-content: space-between
+      align-items: center
+      &:nth-child(1)
+        margin-block: 0 1.5em
+      .text
+        display: flex
+        flex-direction: column
+        color: white
+        font-size: .7em
+        font-weight: 500
+        p
+          font-size: .9em
+          font-weight: 600
+          color: hsl(184, 14%, 56%)
+      .cash
+        font-size: 1.5em
+        font-weight: 600
+        color: hsl(172, 67%, 45%)
+  input
+    @include btns(hsl(183, 100%, 20%), hsl(183, 100%, 17%))
+    // opacity: 0.5
+
 
 
 .attribution
