@@ -76,3 +76,7 @@ customTip.on('focus', function() {
     percent = 0
   }
 })
+
+$('#reset').on('click', function() {
+  window.location.reload()
+})
